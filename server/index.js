@@ -1,15 +1,23 @@
 const express= require("express");
 const cors= require ("cors");
+const dotenv= require("dotenv");
+const connectDB = require("./config/db")
+
+dotenv.config();
 
 const app= express();
 
-app.use(cors());
+//app.use(cors());
 app.use(express.json());
 
+//connectDB();      
+ 
 app.get("/", (req,res)=>{
     res.send("Express Backend");
 });
 
-app.listen(5170,()=>{
-    console.log("Server active on http://localhost:5170");
-})
+const PORT = process.env.PORT || 5170;
+
+app.listen(PORT,()=>{
+    console.log(`Server active on http://localhost:${PORT}`);
+})                                                                                     
